@@ -1,4 +1,4 @@
-# <p align="center">ML4SCI_24</p>
+# <p align="center">ML4SCI_25</p>
 # Foundation Models for End-to-End Event Reconstruction
 
 ---
