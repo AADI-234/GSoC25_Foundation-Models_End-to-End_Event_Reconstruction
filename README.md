@@ -18,12 +18,12 @@ This section evaluates four ResNet-15-based classification models trained using 
 
 ### Results (Task 1)
 
-| Approach                         | Accuracy | ROC-AUC | Notes                             | ROC Curve Plot                                                                                                |
-| :------------------------------- | :------- | :------ | :-------------------------------- | :------------------------------------------------------------------------------------------------------------ |
-| Channel2-Only Classification     | 62.25%   | 0.6665  | Uses only channel 2               | <img src="https://github.com/user-attachments/assets/b14d5f24-0cce-4d5f-87ca-5494d7e6c4b8" width="400" alt="Channel 2 ROC Curve">   |
-| Channel1-Only Classification     | 74.45%   | 0.8158  | Uses only channel 1               | <img src="https://github.com/user-attachments/assets/7467ebcb-5410-4670-aded-5a027b3e8076" width="400" alt="Channel 1 ROC Curve">   |
-| Dual-Stream Feature Concatenation| 74.36%   | 0.8142  | Concatenated features from both   | <img src="https://github.com/user-attachments/assets/ca01ed4f-6153-485b-8366-3af1421aa129" width="400" alt="Dual Stream ROC Curve"> |
-| Two-Channel Input Model          | 74.35%   | 0.8136  | Time & energy as 2-channel input  | <img src="https://github.com/user-attachments/assets/0650e36e-742a-4e3a-9b4c-871f305fe844" width="400" alt="Two Channel ROC Curve"> |
+| Approach                          | Accuracy | ROC-AUC | ROC Curve Plot                                                                                                |
+| --------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| Channel2-Only Classification      | 62.25%   | 0.6665  | <img src="https://github.com/user-attachments/assets/b14d5f24-0cce-4d5f-87ca-5494d7e6c4b8" width="400" alt="Channel 2 ROC Curve">   |
+| Channel1-Only Classification      | 74.45%   | 0.8158  | <img src="https://github.com/user-attachments/assets/7467ebcb-5410-4670-aded-5a027b3e8076" width="400" alt="Channel 1 ROC Curve">   |
+| Dual-Stream Feature Concatenation | 74.36%   | 0.8142  | <img src="https://github.com/user-attachments/assets/ca01ed4f-6153-485b-8366-3af1421aa129" width="400" alt="Dual Stream ROC Curve"> |
+| Two-Channel Input Model           | 74.35%   | 0.8136  | <img src="https://github.com/user-attachments/assets/0650e36e-742a-4e3a-9b4c-871f305fe844" width="400" alt="Two Channel ROC Curve"> |
 
 ---
 
