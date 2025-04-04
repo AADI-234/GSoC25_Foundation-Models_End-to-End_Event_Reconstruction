@@ -1,46 +1,77 @@
-# <p align="center">ML4SCI_24 </p>
+# <p align="center">ML4SCI_24</p>
+# Foundation Models for End-to-End Event Reconstruction
+
+---
+
+## Common Task 1: Electron/Photon Classification
+
+This section evaluates four ResNet-15-based classification models trained using different configurations of the calorimeter data (time and energy channels).
+
+### Implemented Approaches
+
+1. **Time-Only Classification**: Uses only the time channel as input to ResNet-15.  
+2. **Energy-Only Classification**: Uses only the energy channel as input to ResNet-15.  
+3. **Dual-Stream Feature Concatenation**: Two independent ResNet-15 branches for time and energy, features concatenated before final classifier.  
+4. **Two-Channel Input Model**: Both time and energy fed as a 2-channel input into a single ResNet-15 model.
+
+---
+
+### Results (Task 1)
+
+| Approach                          | Accuracy (%) | ROC-AUC | Notes                                  |
+|-----------------------------------|--------------|---------|----------------------------------------|
+| Channel1-Only Classification      |    74.45     | 0.8158  | Uses only channel 1                    |
+| Channel2-Only Classification      |    62.25     | 0.6665  | Uses only channel 2                    |
+| Dual-Stream Feature Concatenation |    74.36     | 0.8142  | Concatenated features from both        |
+| Two-Channel Input Model           |    74.35     | 0.8136  | Time & energy as 2-channel input       |
+
+---
+
+## Specific Task 2i: Self-Supervised Foundation Models for Event Reconstruction
+
+This task involved building foundation models using Self-Supervised Learning (SSL) for end-to-end event reconstruction, including particle classification and property regression.
+
+### Implementation Details
+
+1.  **Foundation Model Pre-training:**
+    * A SimCLR-style self-supervised learning (SSL) pipeline was implemented to learn high-quality representations from unlabeled calorimeter images. Two backbone encoders were evaluated:
+    * The architectures implemented were:
+        
+        | Model Name          | Description                                                                 |
+        |---------------------|-----------------------------------------------------------------------------|
+        | **ResNetSSL**       | Modified ResNet-18 with 8 input channels and a SimCLR projection head.      |
+        | **ParticleTransformer** | Hybrid CNN-Transformer encoder with learned positional encoding and mean pooling. |
+                  
+2.  **Downstream Task Implementation:**
+    Latent vectors were extracted from the labeled dataset using each pretrained encoder. These vectors were then used to train **shallow downstream models** for:
+    
+    - **Classification (logit y)** using a **single hidden-layer MLP** with ReLU activation and sigmoid output.
+    - **Regression (pT, m)** using a **shallow MLP** with one hidden layer, batch normalization, ReLU activation, dropout, and a linear output layer.
 
 
+---
 
-## Common Task 1. Electron/Photon Classification
+### Classification Results (Logit y)
 
-### Project Resources
+| Encoder             | Accuracy | ROC-AUC |
+|---------------------|----------|---------|
+| ResNetSSL           | 86.33%   | 93.57%  |
+| ParticleTransformer | 84.60%   | 92.48%  |
 
-| Resource Type          | Description                                       | Link                                                                                        |
-|------------------------|---------------------------------------------------|---------------------------------------------------------------------------------------------|
-| **Directory**          | Complete collection of project files.             | [Common Task 1](Common_Task1)    |
-| **Detailed Solution**  | Approach used     | [Approach]() |
-| **Jupyter Notebook**   | Code and analysis in a Jupyter Notebook.      | [Open Notebook](Common_Task1/Common_Task1(cms).ipynb) |
-| **PDF Version**        | Pdf of the notebook.                 | [PDF](Common_Task1/Common_Task1(cms).pdf) |
-| **Model Weights**      | Model weights for replication and testing.    | [Model_Weights](Common_Task1/model_weights_Common_Task_1.pth)       |
+---
 
-### Results and Analysis
+### Regression Results
 
-I carefully monitored the training progress over 15 epochs, ensuring optimal performance without overfitting. Below is the conclusion of training:
+#### Transverse Momentum (pT)
 
-- **VAL Loss**: 0.2678
-- **Val ROC-AUC**: 0.805 
-- **Validation Accuracy**: 73.56%
-- **Test Loss**: 0.5398
-- **Test ROC-AUC**: 0.8044
-- **Test Accuracy**: 73.46%
+| Encoder             | MSE      | F1 Score |
+|---------------------|----------|----------|
+| ResNetSSL           | 10108.98 | 0.6639   |
+| ParticleTransformer | 9255.75  | 0.6616   |
 
+#### Invariant Mass (m)
 
-#### Below are the Loss, accuracy, and ROC-AUC curves for the architectures, illustrating the point of overfitting and the epoch at which the models were saved.
-
-#
-
-![Loss Curve](https://github.com/AADI-234/ML4SCI-GSoC24/assets/133188867/6fc8ed40-465b-4858-9ca7-c58cecf521c1)
-- Monitors the model's convergence during training. A decreasing loss indicates learning progress, while sudden increases may indicate overfitting.
-
-
-#
-
-![ROC-AUC Curve](https://github.com/AADI-234/ML4SCI-GSoC24/assets/133188867/95c0aae7-6928-4ca5-ade3-4ea9d595f3c0)
-- Evaluates the model's ability to distinguish between positive and negative classes in binary classification tasks. Higher AUC scores indicate better discrimination performance.
-
-
-# 
-
-![Accuracy Curve](https://github.com/AADI-234/ML4SCI-GSoC24/assets/133188867/ab9c590a-2134-4797-8f44-3fd6a5942e14) 
-- Tracks the model's performance on the training, validation and test datasets. Helps assess how well the model generalizes to unseen data.
+| Encoder             | MSE     | F1 Score |
+|---------------------|---------|----------|
+| ResNetSSL           | 884.57  | 0.8822   |
+| ParticleTransformer | 980.98  | 0.8490   |
