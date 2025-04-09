@@ -1,8 +1,9 @@
 # <p align="center">ML4SCI_25</p>
-# Foundation Models for End-to-End Event Reconstruction
+# Foundation Models for End-to-End Event Reconstruction### Model Weights
 
+### Download all model weights from the [GSOC25 Weights Kaggle Dataset](https://www.kaggle.com/datasets/aadityaporwal/gsoc25-weights).
 ---
-
+---
 ## Common Task 1: Electron/Photon Classification
 
 This section evaluates four ResNet-15-based classification models trained using different configurations of the calorimeter data (time and energy channels).
@@ -61,14 +62,14 @@ This task involved building foundation models using Self-Supervised Learning (SS
 
 | Encoder             | MSE     | F1 Score | True vs Predicted Plot                                                                                               |
 | :------------------ | :------ | :------- | :------------------------------------------------------------------------------------------------------------------- |
-| ResNetSSL           | 884.57  | 0.8822   | <img src="https://github.com/user-attachments/assets/1bbd4eb0-501d-49ad-92f5-3a2a88edb8e0" width="400" alt="ResNetSSL m True vs Predicted Plot">   |
-| ParticleTransformer | 980.98  | 0.8490   | <img src="https://github.com/user-attachments/assets/87d3a493-c1f5-4746-aa75-9a6c4901938a" width="400" alt="ParticleTransformer m True vs Predicted Plot"> |
+| ResNetSSL           | 880.69  | 0.8779   | <img src="https://github.com/user-attachments/assets/6c7e2c3f-3e46-4db7-97ba-fc4f348ba89a" width="400" alt="ResNetSSL m True vs Predicted Plot">   |
+| ParticleTransformer | 980.98  | 0.8490   | <img src="https://github.com/user-attachments/assets/93951d06-b4f0-4e77-817e-7d9532f8651e" width="400" alt="ParticleTransformer m True vs Predicted Plot"> |
 
 #### Transverse Momentum (pT)
 
 | Encoder             | MSE       | F1 Score | True vs Predicted Plot                                                                                           |
 | :------------------ | :-------- | :------- | :--------------------------------------------------------------------------------------------------------------- |
-| ResNetSSL           | 10108.98  | 0.6639   | <img src="https://github.com/user-attachments/assets/b31a39fb-05fa-4b14-b848-f815b34485dd" width="400" alt="ResNetSSL pT True vs Predicted Plot">    |
-| ParticleTransformer | 9255.75   | 0.6616   | <img src="https://github.com/user-attachments/assets/10031a00-a965-48b8-abbd-bd5a15c309a9" width="400" alt="ParticleTransformer pT True vs Predicted Plot"> |
+| ResNetSSL           | 10068.39  | 0.6630   | <img src="https://github.com/user-attachments/assets/bbbd8b3d-51e0-4f31-b273-ed1b6df707c8" width="400" alt="ResNetSSL pT True vs Predicted Plot">    |
+| ParticleTransformer | 9255.75   | 0.6616   | <img src="https://github.com/user-attachments/assets/715b6a74-9802-44c2-a67d-3f3deca788e2" width="400" alt="ParticleTransformer pT True vs Predicted Plot"> |
 
 ---
