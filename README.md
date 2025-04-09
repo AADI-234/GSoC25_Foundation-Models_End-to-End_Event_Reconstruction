@@ -1,5 +1,5 @@
 # <p align="center">ML4SCI_25</p>
-# Foundation Models for End-to-End Event Reconstruction### Model Weights
+# Foundation Models for End-to-End Event Reconstruction
 
 ### Download all model weights from the [GSOC25 Weights Kaggle Dataset](https://www.kaggle.com/datasets/aadityaporwal/gsoc25-weights).
 ---
