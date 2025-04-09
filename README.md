@@ -11,19 +11,19 @@ This section evaluates four ResNet-15-based classification models trained using 
 
 1.  **Time-Only Classification**: Uses only the time channel as input to ResNet-15.
 2.  **Energy-Only Classification**: Uses only the energy channel as input to ResNet-15.
-3.  **Dual-Stream Feature Concatenation**: Two independent ResNet-15 branches for time and energy, features concatenated before final classifier.
+3.  **Dual-Stream Feature Concatenation**: Dual-Stream ResNet-15 Feature Fusion: Two independent ResNet-15 branches are used to extract features separately from time and energy channels. The resulting feature vectors are concatenated before passing through a final linear layer for binary classification.
 4.  **Two-Channel Input Model**: Both time and energy fed as a 2-channel input into a single ResNet-15 model.
 
 ---
 
 ### Results (Task 1)
 
-| Approach                          | Accuracy | ROC-AUC | ROC Curve Plot                                                                                                |
-| --------------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------- |
-| Channel2-Only Classification      | 62.25%   | 0.6665  | <img src="https://github.com/user-attachments/assets/b14d5f24-0cce-4d5f-87ca-5494d7e6c4b8" width="400" alt="Channel 2 ROC Curve">   |
-| Channel1-Only Classification      | 74.45%   | 0.8158  | <img src="https://github.com/user-attachments/assets/7467ebcb-5410-4670-aded-5a027b3e8076" width="400" alt="Channel 1 ROC Curve">   |
-| Dual-Stream Feature Concatenation | 74.36%   | 0.8142  | <img src="https://github.com/user-attachments/assets/ca01ed4f-6153-485b-8366-3af1421aa129" width="400" alt="Dual Stream ROC Curve"> |
-| Two-Channel Input Model           | 74.35%   | 0.8136  | <img src="https://github.com/user-attachments/assets/0650e36e-742a-4e3a-9b4c-871f305fe844" width="400" alt="Two Channel ROC Curve"> |
+| Approach                          | Test Accuracy | Test ROC-AUC | ROC Curve Plot                                                                                                |
+| --------------------------------- | ------------- | ------------ | ------------------------------------------------------------------------------------------------------------- |
+| Channel2-Only Classification      | 62.25%        | 0.6665       | <img src="https://github.com/user-attachments/assets/b14d5f24-0cce-4d5f-87ca-5494d7e6c4b8" width="400" alt="Channel 2 ROC Curve">   |
+| Channel1-Only Classification      | 74.45%        | 0.8158       | <img src="https://github.com/user-attachments/assets/7467ebcb-5410-4670-aded-5a027b3e8076" width="400" alt="Channel 1 ROC Curve">   |
+| Dual-Stream Feature Concatenation | 74.36%        | 0.8142       | <img src="https://github.com/user-attachments/assets/ca01ed4f-6153-485b-8366-3af1421aa129" width="400" alt="Dual Stream ROC Curve"> |
+| Two-Channel Input Model           | 74.35%        | 0.8136       | <img src="https://github.com/user-attachments/assets/0650e36e-742a-4e3a-9b4c-871f305fe844" width="400" alt="Two Channel ROC Curve"> |
 
 ---
 
@@ -57,18 +57,18 @@ This task involved building foundation models using Self-Supervised Learning (SS
 
 ### Regression Results
 
-#### Transverse Momentum (pT)
-
-| Encoder             | MSE       | F1 Score | True vs Predicted Plot                                                                                           |
-| :------------------ | :-------- | :------- | :--------------------------------------------------------------------------------------------------------------- |
-| ResNetSSL           | 10108.98  | 0.6639   | <img src="https://github.com/user-attachments/assets/b31a39fb-05fa-4b14-b848-f815b34485dd" width="400" alt="ResNetSSL pT True vs Predicted Plot">    |
-| ParticleTransformer | 9255.75   | 0.6616   | <img src="https://github.com/user-attachments/assets/10031a00-a965-48b8-abbd-bd5a15c309a9" width="400" alt="ParticleTransformer pT True vs Predicted Plot"> |
-
 #### Invariant Mass (m)
 
 | Encoder             | MSE     | F1 Score | True vs Predicted Plot                                                                                               |
 | :------------------ | :------ | :------- | :------------------------------------------------------------------------------------------------------------------- |
 | ResNetSSL           | 884.57  | 0.8822   | <img src="https://github.com/user-attachments/assets/1bbd4eb0-501d-49ad-92f5-3a2a88edb8e0" width="400" alt="ResNetSSL m True vs Predicted Plot">   |
 | ParticleTransformer | 980.98  | 0.8490   | <img src="https://github.com/user-attachments/assets/87d3a493-c1f5-4746-aa75-9a6c4901938a" width="400" alt="ParticleTransformer m True vs Predicted Plot"> |
+
+#### Transverse Momentum (pT)
+
+| Encoder             | MSE       | F1 Score | True vs Predicted Plot                                                                                           |
+| :------------------ | :-------- | :------- | :--------------------------------------------------------------------------------------------------------------- |
+| ResNetSSL           | 10108.98  | 0.6639   | <img src="https://github.com/user-attachments/assets/b31a39fb-05fa-4b14-b848-f815b34485dd" width="400" alt="ResNetSSL pT True vs Predicted Plot">    |
+| ParticleTransformer | 9255.75   | 0.6616   | <img src="https://github.com/user-attachments/assets/10031a00-a965-48b8-abbd-bd5a15c309a9" width="400" alt="ParticleTransformer pT True vs Predicted Plot"> |
 
 ---
